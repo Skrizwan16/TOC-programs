@@ -4,7 +4,6 @@ int main() {
     int current_state = 0;
     char input;
 
-    // DFA transitions
     int transitions[2][2] = {{1, 0}, {1, 1}};
 
     printf("Enter a string: ");
