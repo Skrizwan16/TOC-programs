@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LENGTH 100
+
+int is_valid(char* str);
+
+int main() {
+    char str[MAX_LENGTH];
+    printf("Enter a string: ");
+    fgets(str, MAX_LENGTH, stdin);
+    if (is_valid(str)) {
+        printf("The string belongs to the language defined by the CFG.\n");
+    } else {
+        printf("The string does not belong to the language defined by the CFG.\n");
+    }
+    return 0;
+}
+
+int is_valid(char* str) {
+    int len = strlen(str);
+    if (len == 1 && str[0] == '\n') {
+        
+        return 1;
+    }
+    if (len < 3 || str[0] != '0' || str[len-2] != '1' || str[len-1] != '\n') {
+       
+        return 0;
+    }
+    for (int i = 1; i < len-2; i++) {
+        if (str[i] != '0') {
+           
+            return 0;
+        }
+    }
+    return 1;
+}
