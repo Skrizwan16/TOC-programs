@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LEN 1000
+
+int is_valid(char *str, int len, int pos);
+
+int main() {
+    char str[MAX_LEN];
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    int len = strlen(str);
+
+    if (is_valid(str, len, 0))
+        printf("Valid string.\n");
+    else
+        printf("Invalid string.\n");
+
+    return 0;
+}
+
+int is_valid(char *str, int len, int pos) {
+   
+    if (pos == len)
+        return 1;
+
+    if (str[pos] == '0') {
+        pos++;
+        if (is_valid(str, len, pos)) {
+            while (pos < len && str[pos] == '1') {
+                pos++;
+            }
+            if (pos == len)
+                return 1;
+        }
+    }
+
+ 
+    if (pos == len)
+        return 1;
+
+    return 0;
+}
